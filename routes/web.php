@@ -109,7 +109,7 @@ Route::middleware(['trainee'])->group(function () {
 });
 
 
-Route::fallback(function() {
-    return __('views.hmm');
-});
+// Route::fallback(function() {
+//     return __('views.hmm');
+// });
 
