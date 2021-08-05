@@ -38,7 +38,7 @@ Route::get('/signin', [LoginController::class, 'getLogin'])->name('signin');
 Route::post('/signin', [LoginController::class, 'postLogin'])->name('signin');
 Route::get('/signout', [LoginController::class, 'logout'])->name('signout');
 Route::prefix('server')->name('server.')->group(function(){
- 	Route::middleware(['admin'])->group(function () {		
+ 	// Route::middleware(['admin'])->group(function () {		
 		Route::get('/', [CourseController1::class, 'dashboard'])->name('index');
 		//route for user
 		Route::resource('user', UserController1::class)->except(['index','edit']);
@@ -91,12 +91,12 @@ Route::prefix('server')->name('server.')->group(function(){
 			
 		});
 		
-	});
+	//});
 	
  
 });
 
-Route::middleware(['trainee'])->group(function () {
+//Route::middleware(['trainee'])->group(function () {
  	Route::get('/', [CourseController2::class, 'dashboard'])->name('index');
  	Route::resource('profile', ProfileController::class, ['parameters' => ['profile' => 'user']])->only(['show','update']);
  	Route::resource('course', CourseController2::class)->only(['index','show']);
@@ -106,7 +106,7 @@ Route::middleware(['trainee'])->group(function () {
 		Route::post('/{task}/updateDuration', [UserTaskController::class, 'updateDuration'])->name('updateDuration');
 	});
 	
-});
+//});
 
 
 Route::fallback(function() {
