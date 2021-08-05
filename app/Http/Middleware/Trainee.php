@@ -16,7 +16,7 @@ class Trainee extends Middleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::check() && Auth::user()->role == UserRole::Trainee) {
             return $next($request);
